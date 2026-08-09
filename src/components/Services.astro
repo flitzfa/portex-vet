@@ -80,6 +80,32 @@ function getIcon(type: string): string {
     return fallbackSvg;
   }
 }
+
+// GRUPO 1: Atención General - Cards grandes con ícono + botón individual
+const atencionGeneral = [
+  { name: 'Atención clínica de perros y gatos', icon: 'dog-cat' },
+  { name: 'Atención clínica de animales no tradicionales', icon: 'exotic' },
+  { name: 'Plan vacunal', icon: 'vaccine' },
+  { name: 'Certificado de salud', icon: 'certificate' },
+  { name: 'Control antirrábico', icon: 'rabies' },
+  { name: 'Colocación de microchip', icon: 'microchip' },
+  { name: 'Análisis de laboratorio', icon: 'lab' },
+  { name: 'Ecografías', icon: 'ultrasound' },
+] as const;
+
+// GRUPO 2: Especialidades Médicas - Chips compactos (ícono chico + nombre, sin botón individual)
+const especialidadesMedicas = [
+  { name: 'Cardiología', icon: 'cardio' },
+  { name: 'Nutrición', icon: 'nutrition' },
+  { name: 'Endocrinología', icon: 'endocrine' },
+  { name: 'Oftalmología', icon: 'eye' },
+  { name: 'Dermatología', icon: 'skin' },
+  { name: 'Gastroenterología', icon: 'stomach' },
+  { name: 'Etología', icon: 'behavior' },
+  { name: 'Traumatología', icon: 'trauma' },
+  { name: 'Cirugías', icon: 'surgery' },
+  { name: 'Kinesiología', icon: 'physio' },
+] as const;
 ---
 
 <section id="servicios" class="section bg-white">
@@ -91,39 +117,48 @@ function getIcon(type: string): string {
       <p class="text-lg text-gray-600 text-balance">Atención clínica de perros, gatos y animales no tradicionales con profesionales especializados</p>
     </div>
 
-    <!-- Specialties Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
-      {[
-        { name: 'Atención clínica de perros y gatos', icon: 'dog-cat' },
-        { name: 'Atención clínica de animales no tradicionales', icon: 'exotic' },
-        { name: 'Plan vacunal', icon: 'vaccine' },
-        { name: 'Certificado de salud', icon: 'certificate' },
-        { name: 'Control antirrábico', icon: 'rabies' },
-        { name: 'Colocación de microchip', icon: 'microchip' },
-        { name: 'Análisis de laboratorio', icon: 'lab' },
-        { name: 'Ecografías', icon: 'ultrasound' },
-        { name: 'Cardiología', icon: 'cardio' },
-        { name: 'Nutrición', icon: 'nutrition' },
-        { name: 'Endocrinología', icon: 'endocrine' },
-        { name: 'Oftalmología', icon: 'eye' },
-        { name: 'Dermatología', icon: 'skin' },
-        { name: 'Gastroenterología', icon: 'stomach' },
-        { name: 'Etología', icon: 'behavior' },
-        { name: 'Traumatología', icon: 'trauma' },
-        { name: 'Cirugías', icon: 'surgery' },
-        { name: 'Kinesiología', icon: 'physio' },
-      ].map((specialty) => (
-        <article class="card-hover-lift group p-6 md:p-8 text-center h-full flex flex-col">
-          <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-brand shadow-[0_10px_30px_-10px_rgba(26,82,48,0.4)] flex items-center justify-center group-hover:scale-105 transition-transform duration-300 text-white" set:html={getIcon(specialty.icon)} />
-          <h3 class="text-lg font-bold text-gray-900 mb-4 leading-snug text-balance">{specialty.name}</h3>
-          <a href={business.whatsappUrl + '?text=' + encodeURIComponent(business.whatsappMessages.consultarEspecialidad(specialty.name))} 
-             target="_blank" rel="noopener noreferrer"
-             class="btn-secondary w-full mt-auto text-sm py-2.5">
-            <WhatsAppIcon class="w-4 h-4 inline-block ml-1.5 -mt-0.5" />
-            Consultar
-          </a>
-        </article>
-      ))}
+    <!-- GRUPO 1: Atención General -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold text-gray-900 text-center mb-8">Atención General</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        {atencionGeneral.map((specialty) => (
+          <article class="card-hover-lift group p-6 md:p-8 text-center h-full flex flex-col">
+            <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-gradient-brand shadow-[0_10px_30px_-10px_rgba(26,82,48,0.4)] flex items-center justify-center group-hover:scale-105 transition-transform duration-300 text-white" set:html={getIcon(specialty.icon)} />
+            <h4 class="text-lg font-bold text-gray-900 mb-4 leading-snug text-balance">{specialty.name}</h4>
+            <a href={business.whatsappUrl + '?text=' + encodeURIComponent(business.whatsappMessages.consultarEspecialidad(specialty.name))} 
+               target="_blank" rel="noopener noreferrer"
+               class="btn-secondary w-full mt-auto text-sm py-2.5">
+              <WhatsAppIcon class="w-4 h-4 inline-block ml-1.5 -mt-0.5" />
+              Consultar
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- GRUPO 2: Especialidades Médicas -->
+    <div>
+      <h3 class="text-2xl font-bold text-gray-900 text-center mb-8">Especialidades Médicas</h3>
+      
+      <!-- Grid denso de chips -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-10">
+        {especialidadesMedicas.map((specialty) => (
+          <div class="group flex items-center gap-3 px-4 py-3 rounded-xl bg-brand-50 hover:bg-brand-100 transition-colors duration-200 border border-brand-100 hover:border-brand-200 min-w-0">
+            <span class="w-8 h-8 flex-shrink-0 rounded-lg bg-brand-100 group-hover:bg-brand-200 transition-colors duration-200 flex items-center justify-center text-brand-700" set:html={getIcon(specialty.icon).replace('w-8 h-8', 'w-5 h-5')} />
+            <span class="font-medium text-gray-900 text-sm leading-snug truncate min-w-0">{specialty.name}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA único centrado para especialidades médicas -->
+      <div class="text-center">
+        <a href={business.whatsappUrl + '?text=' + encodeURIComponent(business.whatsappMessages.consultarEspecialidadesMedicas)} 
+           target="_blank" rel="noopener noreferrer"
+           class="btn-primary inline-flex items-center gap-2 px-8 py-4 text-base font-semibold">
+          <WhatsAppIcon class="w-5 h-5" />
+          Consultá por cualquier especialidad
+        </a>
+      </div>
     </div>
   </div>
 </section>

@@ -9,7 +9,7 @@ import { business } from '../config/business';
     <div class="flex items-center justify-between h-16 md:h-20">
       <!-- Logo -->
       <a href={import.meta.env.BASE_URL + '#inicio'} class="flex items-center gap-3 shrink-0" aria-label={business.fullName + ' - Inicio'}>
-        <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Logo Portex" id="header-logo-icon" class="h-12 w-auto object-contain opacity-0 transition-opacity duration-300" />
+        <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Logo Portex" id="header-logo-icon" class="h-12 w-auto object-contain opacity-0 transition-opacity duration-300 rounded-2xl" />
         <span class="font-display font-bold text-xl md:text-2xl text-gray-900 tracking-tight">{business.name}</span>
       </a>
 

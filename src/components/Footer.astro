@@ -11,7 +11,7 @@ import { business } from '../config/business';
       <!-- Brand Info -->
       <div class="lg:col-span-1">
         <a href={import.meta.env.BASE_URL + '#inicio'} class="flex items-center gap-3 mb-6" aria-label={business.fullName + ' - Inicio'}>
-          <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Logo Portex" class="h-10 w-auto object-contain" />
+          <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Logo Portex" class="h-10 w-auto object-contain rounded-2xl" />
           <span class="font-display font-bold text-xl text-white tracking-tight">{business.name}</span>
         </a>
         <p class="text-gray-400 mb-6 leading-relaxed max-w-sm">{business.tagline}. Cuidamos lo que más amás.</p>
@@ -69,12 +69,9 @@ import { business } from '../config/business';
       <div class="lg:col-span-1" aria-label="Horarios de atención">
         <h4 class="font-semibold text-white mb-4 tracking-tight">Horarios</h4>
         <dl class="space-y-3 text-gray-400 text-sm">
-          <div class="border-b border-gray-800 pb-2">
-            <dt class="font-medium text-gray-300 mb-1">{business.hours.clinica.name} (Lun–Vie)</dt>
-            <dd class="text-brand-violet font-medium leading-relaxed">
-              {business.hours.clinica.ranges[0]}<br />
-              {business.hours.clinica.ranges[1]}
-            </dd>
+          <div class="flex justify-between border-b border-gray-800 pb-2">
+            <dt class="font-medium text-gray-300">{business.hours.clinica.name} (Lun–Vie)</dt>
+            <dd class="text-brand-violet font-medium text-sm text-right">{business.hours.clinica.ranges[0]} / {business.hours.clinica.ranges[1]}</dd>
           </div>
           <div class="flex justify-between border-b border-gray-800 pb-2">
             <dt>{business.hours.clinica.sabados.days}</dt>

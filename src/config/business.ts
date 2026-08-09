@@ -19,6 +19,7 @@ export const business = {
     turnoVeterinaria: 'Hola Portex! Quiero pedir turno para consulta veterinaria',
     consultarVeterinaria: 'Hola Portex! Quiero consultar por servicios veterinarios',
     consultarEspecialidad: (especialidad: string) => `Hola Portex! Quiero consultar por la especialidad: ${especialidad}`,
+    consultarEspecialidadesMedicas: 'Hola Portex! Quería consultar sobre las especialidades médicas que ofrecen',
     comoLlegar: 'Hola Portex! Quiero saber cómo llegar a la clínica',
   },
 
