@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://flitzfa.github.io/athenea-vet',
-  base: '/athenea-vet/',
+  site: 'https://flitzfa.github.io/portex-vet',
+  base: '/portex-vet/',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

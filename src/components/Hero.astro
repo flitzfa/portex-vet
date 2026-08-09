@@ -30,24 +30,15 @@ import { business } from '../config/business';
       <!-- Logo grande -->
       <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Logo Portex" class="h-28 sm:h-32 md:h-36 w-auto object-contain mx-auto mb-6 animate-fade-in" />
       
-      <!-- Badge - UN SOLO ESTADO (clínica veterinaria) -->
+      <!-- Badge - UNA SOLA LÍNEA DINÁMICA CON ESTADO ACTUAL -->
       <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-portex-200 shadow-card mb-7 animate-fade-in">
-        <div class="flex flex-col items-center gap-1.5 leading-tight">
-          <span class="flex items-center gap-2 text-xs text-gray-600">
-            <span id="clinica-status-dot" class="relative flex h-2.5 w-2.5 flex-shrink-0">
-              <span id="clinica-status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 hidden"></span>
-              <span id="clinica-status-dot-inner" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gray-400"></span>
-            </span>
-            <span>{business.hours.clinica.name}: {business.hours.clinica.shortDays} {business.hours.clinica.ranges[0]} / {business.hours.clinica.ranges[1]}hs</span>
+        <span class="flex items-center gap-2 text-sm text-gray-700" id="hero-status-badge">
+          <span id="hero-status-dot" class="relative flex h-2.5 w-2.5 flex-shrink-0">
+            <span id="hero-status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 hidden"></span>
+            <span id="hero-status-dot-inner" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gray-400"></span>
           </span>
-          <span class="flex items-center gap-2 text-xs text-gray-600">
-            <span id="sabados-status-dot" class="relative flex h-2.5 w-2.5 flex-shrink-0">
-              <span id="sabados-status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 hidden"></span>
-              <span id="sabados-status-dot-inner" class="relative inline-flex rounded-full h-2.5 w-2.5 bg-gray-400"></span>
-            </span>
-            <span>{business.hours.clinica.sabados.days}: {business.hours.clinica.sabados.ranges[0]}hs</span>
-          </span>
-        </div>
+          <span id="hero-status-text">Calculando estado...</span>
+        </span>
       </div>
 
       <!-- Main Headline -->
@@ -197,46 +188,86 @@ import { business } from '../config/business';
     const saturdayStart = 10 * 60;     // 10:00 = 600
     const saturdayEnd = 13 * 60;       // 13:00 = 780
     
-    // Verificar si Clínica está abierta (L-V: mañana O tarde, Sáb: solo mañana)
-    let isClinicaOpen = false;
+    // Verificar si está abierto AHORA
+    let isOpen = false;
+    let currentPeriod = ''; // 'morning' | 'afternoon' | 'saturday' | ''
+    let nextOpenDay = '';
+    let nextOpenTime = '';
+    
     if (clinicaDayIndices.includes(dayIndex)) {
-      // Lunes a Viernes: abierto en mañana O tarde
-      isClinicaOpen = (currentMinutes >= morningStart && currentMinutes < morningEnd) ||
-                      (currentMinutes >= afternoonStart && currentMinutes < afternoonEnd);
+      // Lunes a Viernes
+      if (currentMinutes >= morningStart && currentMinutes < morningEnd) {
+        isOpen = true;
+        currentPeriod = 'morning';
+      } else if (currentMinutes >= afternoonStart && currentMinutes < afternoonEnd) {
+        isOpen = true;
+        currentPeriod = 'afternoon';
+      } else if (currentMinutes < morningStart) {
+        // Antes de la mañana - abre hoy en la mañana
+        nextOpenDay = 'hoy';
+        nextOpenTime = '09:30';
+      } else if (currentMinutes >= morningEnd && currentMinutes < afternoonStart) {
+        // Entre mañana y tarde - abre hoy en la tarde
+        nextOpenDay = 'hoy';
+        nextOpenTime = '16:30';
+      } else {
+        // Después de la tarde - abre mañana (o lunes si es viernes)
+        if (dayIndex === 5) { // Viernes
+          nextOpenDay = 'el lunes';
+        } else {
+          nextOpenDay = 'mañana';
+        }
+        nextOpenTime = '09:30';
+      }
     } else if (sabadosDayIndices.includes(dayIndex)) {
-      // Sábados: solo mañana
-      isClinicaOpen = currentMinutes >= saturdayStart && currentMinutes < saturdayEnd;
-    }
-    // Domingos: cerrado (isClinicaOpen = false)
-    
-    // Actualizar UI para Clínica (L-V)
-    const clinicaStatusPing = document.getElementById('clinica-status-ping');
-    const clinicaStatusDotInner = document.getElementById('clinica-status-dot-inner');
-    
-    if (clinicaStatusPing && clinicaStatusDotInner) {
-      if (isClinicaOpen && clinicaDayIndices.includes(dayIndex)) {
-        clinicaStatusPing.classList.remove('hidden');
-        clinicaStatusDotInner.style.backgroundColor = '#22c55e'; // green-500
+      // Sábados
+      if (currentMinutes >= saturdayStart && currentMinutes < saturdayEnd) {
+        isOpen = true;
+        currentPeriod = 'saturday';
+      } else if (currentMinutes < saturdayStart) {
+        nextOpenDay = 'hoy';
+        nextOpenTime = '10:00';
       } else {
-        clinicaStatusPing.classList.add('hidden');
-        clinicaStatusDotInner.style.backgroundColor = '#9ca3af'; // gray-400
+        // Después del sábado - abre el lunes
+        nextOpenDay = 'el lunes';
+        nextOpenTime = '09:30';
       }
+    } else {
+      // Domingo
+      nextOpenDay = 'el lunes';
+      nextOpenTime = '09:30';
     }
     
-    // Actualizar UI para Sábados
-    const sabadosStatusPing = document.getElementById('sabados-status-ping');
-    const sabadosStatusDotInner = document.getElementById('sabados-status-dot-inner');
-    
-    if (sabadosStatusPing && sabadosStatusDotInner) {
-      const isSabadosOpen = sabadosDayIndices.includes(dayIndex) && 
-                            currentMinutes >= saturdayStart && currentMinutes < saturdayEnd;
-      if (isSabadosOpen) {
-        sabadosStatusPing.classList.remove('hidden');
-        sabadosStatusDotInner.style.backgroundColor = '#22c55e'; // green-500
-      } else {
-        sabadosStatusPing.classList.add('hidden');
-        sabadosStatusDotInner.style.backgroundColor = '#9ca3af'; // gray-400
+    // Construir texto del badge
+    let statusText = '';
+    if (isOpen) {
+      let closesAt = '';
+      if (currentPeriod === 'morning') {
+        closesAt = '13:00';
+      } else if (currentPeriod === 'afternoon') {
+        closesAt = '20:00';
+      } else if (currentPeriod === 'saturday') {
+        closesAt = '13:00';
       }
+      statusText = `Abierto ahora · Cierra a las ${closesAt}`;
+    } else {
+      statusText = `Cerrado ahora · Abre ${nextOpenDay} a las ${nextOpenTime}`;
+    }
+    
+    // Actualizar UI del badge único
+    const heroStatusPing = document.getElementById('hero-status-ping');
+    const heroStatusDotInner = document.getElementById('hero-status-dot-inner');
+    const heroStatusText = document.getElementById('hero-status-text');
+    
+    if (heroStatusPing && heroStatusDotInner && heroStatusText) {
+      if (isOpen) {
+        heroStatusPing.classList.remove('hidden');
+        heroStatusDotInner.style.backgroundColor = '#22c55e'; // green-500
+      } else {
+        heroStatusPing.classList.add('hidden');
+        heroStatusDotInner.style.backgroundColor = '#9ca3af'; // gray-400
+      }
+      heroStatusText.textContent = statusText;
     }
   }
   

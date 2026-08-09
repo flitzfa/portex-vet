@@ -39,7 +39,10 @@ import { business } from '../config/business';
           <dl class="space-y-3 text-gray-600">
             <div class="flex justify-between py-2 border-b border-portex-100">
               <dt class="font-medium">{business.hours.clinica.days}</dt>
-              <dd class="text-brand-purple font-semibold">{business.hours.clinica.ranges[0]} / {business.hours.clinica.ranges[1]} hs</dd>
+              <dd class="text-brand-purple font-semibold leading-relaxed">
+                <span class="block">{business.hours.clinica.ranges[0]}</span>
+                <span class="block">{business.hours.clinica.ranges[1]} hs</span>
+              </dd>
             </div>
             <div class="flex justify-between py-2 border-b border-portex-100">
               <dt class="font-medium">{business.hours.clinica.sabados.days}</dt>
@@ -76,8 +79,7 @@ import { business } from '../config/business';
               </div>
               <div>
                 <p class="font-medium text-gray-900">Dirección</p>
-                <p class="text-gray-600">{business.address.short}</p>
-                <p class="text-sm text-gray-500">{business.address.withCrossStreet}</p>
+                <p class="text-gray-600">{business.address.withCrossStreet}</p>
               </div>
             </div>
 
