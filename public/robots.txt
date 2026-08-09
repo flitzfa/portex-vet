@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://flitzfa.github.io/athenea-vet/sitemap-index.xml
+Sitemap: https://flitzfa.github.io/portex-vet/sitemap-index.xml

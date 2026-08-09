@@ -14,9 +14,9 @@
   --color-portex-900: #0a2c19;
   --color-portex-950: #05100a;
 
-  --color-brand-violet: #1a5230;
-  --color-brand-purple: #123d24;
-  --color-brand-lavender: #e8f5ee;
+  --color-brand-green: #1a5230;
+  --color-brand-green-dark: #123d24;
+  --color-brand-green-light: #e8f5ee;
   --color-brand-white: #ffffff;
 
   /* Tipografías */
@@ -86,11 +86,11 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-brand-violet text-white hover:bg-brand-purple hover:shadow-portex active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-brand-green text-white hover:bg-brand-green-dark hover:shadow-portex active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-white text-brand-purple border-2 border-brand-purple hover:bg-portex-50 hover:shadow-portex active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-white text-brand-green-dark border-2 border-brand-green-dark hover:bg-portex-50 hover:shadow-portex active:scale-[0.98];
   }
 
   .btn-whatsapp {
@@ -142,7 +142,7 @@
 
   /* Inputs */
   .input {
-    @apply w-full px-4 py-3.5 text-base bg-white border border-gray-300 rounded-xl placeholder:text-gray-400 focus:border-brand-violet focus:ring-2 focus:ring-portex-200 focus:outline-none transition-all duration-200;
+    @apply w-full px-4 py-3.5 text-base bg-white border border-gray-300 rounded-xl placeholder:text-gray-400 focus:border-brand-green focus:ring-2 focus:ring-portex-200 focus:outline-none transition-all duration-200;
   }
 
   .label {
@@ -150,7 +150,7 @@
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-brand-violet to-brand-purple bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-green to-brand-green-dark bg-clip-text text-transparent;
   }
 
   .text-balance {
@@ -215,7 +215,7 @@
   }
 
   .bg-gradient-brand {
-    @apply bg-gradient-to-r from-brand-violet to-brand-purple;
+    @apply bg-gradient-to-r from-brand-green to-brand-green-dark;
   }
 
   .glass {

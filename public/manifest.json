@@ -2,22 +2,40 @@
   "name": "Veterinaria Portex",
   "short_name": "Portex Vet",
   "description": "Veterinaria Portex en Isidro Casanova, Buenos Aires. Atención clínica de perros, gatos y animales no tradicionales. 18 especialidades médicas.",
-  "start_url": "/",
+  "start_url": "/portex-vet/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1a5230",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/favicon.ico",
+      "src": "/portex-vet/favicon.ico",
       "sizes": "48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/portex-vet/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/portex-vet/images/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/portex-vet/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/portex-vet/images/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": ["medical", "lifestyle"],
@@ -27,14 +45,14 @@
       "short_name": "Turno Veterinaria",
       "description": "Pedir turno para consulta veterinaria por WhatsApp",
       "url": "https://wa.me/5491171459657?text=Hola%20Portex!%20Quiero%20pedir%20turno%20para%20consulta%20veterinaria",
-      "icons": [{ "src": "/favicon.svg", "sizes": "192x192" }]
+      "icons": [{ "src": "/portex-vet/images/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Contactar por WhatsApp",
       "short_name": "WhatsApp",
       "description": "Contactar con la clínica por WhatsApp",
       "url": "https://wa.me/5491171459657",
-      "icons": [{ "src": "/favicon.svg", "sizes": "192x192" }]
+      "icons": [{ "src": "/portex-vet/images/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
