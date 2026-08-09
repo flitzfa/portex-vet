@@ -21,18 +21,13 @@ import { business } from '../config/business';
         <a href="#ubicacion" class="text-sm font-medium text-gray-600 hover:text-brand-violet transition-colors hover:-translate-y-px">Ubicación</a>
       </div>
 
-      <!-- CTA Buttons -->
+      <!-- CTA Button -->
       <div class="flex items-center gap-3">
         <a href={business.whatsappUrl + '?text=' + encodeURIComponent(business.whatsappMessages.turnoVeterinaria)}
            target="_blank" rel="noopener noreferrer"
            class="btn-whatsapp hidden xl:flex whitespace-nowrap px-4 lg:px-4 xl:px-6">
           <WhatsAppIcon class="w-5 h-5" />
-          Pedir Turno
-        </a>
-        <a href={business.whatsappUrl + '?text=' + encodeURIComponent(business.whatsappMessages.general)}
-           target="_blank" rel="noopener noreferrer"
-           class="btn-primary hidden xl:flex whitespace-nowrap px-4 lg:px-4 xl:px-6">
-          Contactar por WhatsApp
+          Pedir Turno por WhatsApp
         </a>
       </div>
 
@@ -57,12 +52,7 @@ import { business } from '../config/business';
                target="_blank" rel="noopener noreferrer"
                class="btn-whatsapp w-full justify-center">
               <WhatsAppIcon class="w-5 h-5" />
-              Pedir Turno
-            </a>
-            <a href={business.whatsappUrl + '?text=' + encodeURIComponent(business.whatsappMessages.general)}
-               target="_blank" rel="noopener noreferrer"
-               class="btn-primary w-full justify-center">
-              Contactar por WhatsApp
+              Pedir Turno por WhatsApp
             </a>
           </div>
         </div>
