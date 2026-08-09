@@ -1,0 +1,63 @@
+---
+// Product Catalog section for Clínica Veterinaria Athena
+import ProductCard from './ProductCard.astro';
+import WhatsAppIcon from './icons/WhatsAppIcon.astro';
+import products from '../data/products.json';
+---
+
+<section id="petshop" class="section bg-gradient-athena">
+  <div class="container-main">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-12">
+      <span class="badge-primary mb-4 inline-block">Pet Shop Athena</span>
+      <h2 class="mb-4 text-balance">Productos destacados para tu mascota</h2>
+      <p class="text-lg text-gray-600 text-balance">Seleccionamos lo mejor en juguetes, accesorios, indumentaria y cuidado. ¡Comprá directo por WhatsApp!</p>
+    </div>
+
+    <!-- Promo Banner -->
+    <div class="mb-12 p-6 md:p-8 rounded-[1.75rem] bg-gradient-brand text-white relative overflow-hidden shadow-athena-lg">
+      <div class="absolute inset-0 opacity-10" aria-hidden="true">
+        <svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <defs>
+            <pattern id="pattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+              <path d="M30 0L15 15v30l15 15 15-15V15L30 0zm0 6l12 12v24l-12 12-12-12V18l12-12z" fill="white" fill-opacity="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#pattern)"/>
+        </svg>
+      </div>
+      <div class="relative grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div class="flex items-center justify-center lg:justify-start gap-3 text-center lg:text-left">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-300"></span>
+          </span>
+          <span class="font-display font-semibold text-lg text-balance">¡Jueves 15% OFF en Juguetes e Indumentaria!</span>
+        </div>
+        <a href="https://wa.me/5491168448324?text=Hola%20Athena!%20Quiero%20aprovechar%20el%2015%25%20OFF%20en%20Juguetes%20e%20Indumentaria" 
+           target="_blank" rel="noopener noreferrer"
+           class="btn-secondary justify-center whitespace-nowrap">
+          Consultar Promoción
+        </a>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch" role="list" aria-label="Catálogo de productos">
+      {products.map((product) => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+
+    <!-- View More CTA -->
+    <div class="text-center mt-12 max-w-2xl mx-auto">
+      <a href="https://wa.me/5491168448324?text=Hola%20Athena!%20Quiero%20ver%20el%20cat%C3%A1logo%20completo%20de%20productos" 
+         target="_blank" rel="noopener noreferrer"
+         class="btn-outline inline-flex items-center gap-2">
+        Ver Catálogo Completo
+        <WhatsAppIcon class="w-5 h-5" />
+      </a>
+      <p class="mt-4 text-sm text-gray-500">¿No ves lo que buscás? <strong>Escribinos</strong> y te ayudamos a encontrarlo.</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colores de marca Portex - Verde Bosque */
+  --color-portex-50: #e8f5ee;
+  --color-portex-100: #d1ebdd;
+  --color-portex-200: #a3d7bb;
+  --color-portex-300: #75c399;
+  --color-portex-400: #47af77;
+  --color-portex-500: #1a9c55;
+  --color-portex-600: #168046;
+  --color-portex-700: #126437;
+  --color-portex-800: #0e4828;
+  --color-portex-900: #0a2c19;
+  --color-portex-950: #05100a;
+
+  --color-brand-violet: #1a5230;
+  --color-brand-purple: #123d24;
+  --color-brand-lavender: #e8f5ee;
+  --color-brand-white: #ffffff;
+
+  /* Tipografías */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+
+  /* Sombras */
+  --shadow-portex: 0 10px 40px -10px rgb(26 82 48 / 0.3);
+  --shadow-portex-lg: 0 20px 60px -15px rgb(26 82 48 / 0.4);
+  --shadow-card: 0 4px 20px -4px rgb(0 0 0 / 0.08);
+  --shadow-card-hover: 0 12px 40px -8px rgb(0 0 0 / 0.12);
+
+  /* Transiciones */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    @apply text-gray-900 antialiased bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-semibold text-gray-900 tracking-tight;
+  }
+
+  h1 { @apply text-4xl md:text-5xl lg:text-6xl leading-tight; }
+  h2 { @apply text-3xl md:text-4xl lg:text-5xl leading-tight; }
+  h3 { @apply text-2xl md:text-3xl leading-snug; }
+  h4 { @apply text-xl md:text-2xl leading-snug; }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  img {
+    @apply max-w-full h-auto block;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-portex-500 ring-offset-2 ring-offset-white;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-portex-50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-portex-300 rounded-full hover:bg-portex-400;
+  }
+}
+
+@layer components {
+  /* Botones */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-brand-violet text-white hover:bg-brand-purple hover:shadow-portex active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-white text-brand-purple border-2 border-brand-purple hover:bg-portex-50 hover:shadow-portex active:scale-[0.98];
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-green-500 text-white hover:bg-green-600 hover:shadow-[0_10px_40px_-10px_rgb(34_197_94_/_0.4)] active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3.5 text-base font-semibold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-transparent border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 active:scale-[0.98];
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden border border-gray-100;
+  }
+
+  .card-hover-lift {
+    @apply bg-white rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-1;
+  }
+
+  /* Contenedores */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .section-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full;
+  }
+
+  .badge-primary {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-portex-100 text-portex-800;
+  }
+
+  .badge-success {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-800;
+  }
+
+  /* Inputs */
+  .input {
+    @apply w-full px-4 py-3.5 text-base bg-white border border-gray-300 rounded-xl placeholder:text-gray-400 focus:border-brand-violet focus:ring-2 focus:ring-portex-200 focus:outline-none transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1.5;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-violet to-brand-purple bg-clip-text text-transparent;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-slide-down,
+    .animate-scale-in {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  .bg-gradient-portex {
+    @apply bg-gradient-to-br from-portex-50 via-white to-portex-100;
+  }
+
+  .bg-gradient-portex-hero {
+    @apply bg-gradient-to-br from-portex-50 via-white to-portex-100;
+  }
+
+  .bg-gradient-brand {
+    @apply bg-gradient-to-r from-brand-violet to-brand-purple;
+  }
+
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-gray-900/80 backdrop-blur-xl border border-white/10;
+  }
+}

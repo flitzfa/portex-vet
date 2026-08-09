@@ -1,0 +1,27 @@
+---
+// Main page for Veterinaria Portex
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import HoursLocation from '../components/HoursLocation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Veterinaria Portex en Isidro Casanova | Atención Clínica y 18 Especialidades"
+  description="Veterinaria Portex en Isidro Casanova, Buenos Aires. Atención clínica de perros, gatos y animales no tradicionales. 18 especialidades médicas. ¡Pedí turno por WhatsApp!"
+  image="/og-image.jpg"
+  url="https://portex-vet.com.ar"
+  type="website"
+>
+  <Header slot="header" />
+  
+  <div slot="main" class="min-h-screen">
+    <Hero />
+    <Services />
+    <HoursLocation />
+  </div>
+  
+  <Footer slot="footer" />
+</Layout>

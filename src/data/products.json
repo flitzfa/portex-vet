@@ -1,0 +1,51 @@
+[
+  {
+    "id": "cepillo-vapor",
+    "name": "Cepillo con Vaporcito y Luz",
+    "price": 9500,
+    "category": "Higiene y Estética",
+    "image": "/images/products/cepillo-vapor-luz.png",
+    "description": "Cepillo recargable con vapor suave y luz para desenredar y masajear sin estrés.",
+    "badge": "Más Vendido"
+  },
+  {
+    "id": "pretal-n3",
+    "name": "Pretal N°3 Reforzado",
+    "price": 16000,
+    "category": "Paseo y Control",
+    "description": "Pretal de alta resistencia para paseos seguros.",
+    "badge": "Destacado",
+    "images": [
+      { "src": "/images/products/pretal-n3-azul.png", "label": "Azul" },
+      { "src": "/images/products/pretal-n3-celeste.png", "label": "Celeste" },
+      { "src": "/images/products/pretal-n3-rosa.png", "label": "Rosa" }
+    ]
+  },
+  {
+    "id": "saca-pelusas",
+    "name": "Saca Pelusas de Rolo",
+    "price": 6500,
+    "category": "Higiene",
+    "image": "/images/products/saca-pelusas.png",
+    "description": "Remueve pelos de ropa, tapizados y camas de forma rápida y práctica.",
+    "badge": "Práctico"
+  },
+  {
+    "id": "identificadores",
+    "name": "Identificadores de Mascota",
+    "price": 3000,
+    "category": "Accesorios",
+    "image": "/images/products/identificadores.png",
+    "description": "Chapitas de identificación personalizables para la seguridad de tu perro o gato.",
+    "badge": "Seguridad"
+  },
+  {
+    "id": "kong-extreme",
+    "name": "Kong Extreme Juguete Rellenable",
+    "price": 24000,
+    "category": "Juguetes",
+    "image": "/images/products/kong-extreme.png",
+    "description": "El clásico juguete irrompible de caucho ultra resistente para rellenar con comida.",
+    "badge": "Ultra Resistente"
+  }
+]

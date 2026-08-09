@@ -1,0 +1,41 @@
+---
+// Patient Gallery section for Clínica Veterinaria Athena
+---
+
+<section id="pacientes" class="section bg-white">
+  <div class="container-main">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="badge-primary mb-4 inline-block">Pacientes de Athena</span>
+      <h2 class="mb-4 text-balance">Pacientes que pasaron por Athena</h2>
+      <p class="text-lg text-gray-600 text-balance">Parte de la familia que confía en nosotros</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" role="list" aria-label="Galería de pacientes">
+      {[
+        'paciente-athena-1.png',
+        'paciente-athena-2.png',
+        'paciente-athena-3.png',
+        'paciente-athena-4.png',
+        'paciente-athena-5.png',
+        'paciente-athena-6.png'
+      ].map((image, index) => (
+        <article class="group relative overflow-hidden rounded-2xl bg-athena-50 shadow-card hover:shadow-card-hover transition-all duration-300" role="listitem">
+          <div class="aspect-[3/4] overflow-hidden">
+            <img
+              src={import.meta.env.BASE_URL + 'images/gallery/' + image}
+              alt={`Paciente de Athena ${index + 1}`}
+              class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out"
+              loading="lazy"
+              width="400"
+              height="533"
+            />
+          </div>
+          <!-- Sutil overlay con brand color en hover -->
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-purple/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" aria-hidden="true" />
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
