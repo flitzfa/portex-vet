@@ -3,6 +3,8 @@
 import WhatsAppIcon from './icons/WhatsAppIcon.astro';
 import InstagramIcon from './icons/InstagramIcon.astro';
 import { business } from '../config/business';
+import logo from '../assets/images/logo.png';
+import { Image } from 'astro:assets';
 ---
 
 <footer class="bg-slate-950 text-gray-300" role="contentinfo">
@@ -11,7 +13,7 @@ import { business } from '../config/business';
       <!-- Brand Info -->
       <div class="lg:col-span-1">
         <a href={import.meta.env.BASE_URL + '#inicio'} class="flex items-center gap-3 mb-6" aria-label={business.fullName + ' - Inicio'}>
-          <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Logo Portex" class="h-10 w-auto object-contain rounded-2xl" />
+          <Image src={logo} alt="Logo Portex" class="h-10 w-auto object-contain rounded-2xl" />
           <span class="font-display font-bold text-xl text-white tracking-tight">{business.name}</span>
         </a>
         <p class="text-gray-400 mb-6 leading-relaxed max-w-sm">{business.tagline}. Cuidamos lo que más amás.</p>

@@ -2,6 +2,8 @@
 // Hero section for Veterinaria Portex
 import WhatsAppIcon from './icons/WhatsAppIcon.astro';
 import { business } from '../config/business';
+import logo from '../assets/images/logo.png';
+import { Image } from 'astro:assets';
 ---
 
 <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 md:pt-24 bg-gradient-portex-hero overflow-hidden isolate">
@@ -28,7 +30,7 @@ import { business } from '../config/business';
   <div class="container-main relative z-10 pt-6 pb-14 md:pt-10 md:pb-20 lg:pt-14 lg:pb-28">
     <div class="max-w-5xl mx-auto text-center">
       <!-- Logo grande -->
-      <img src={import.meta.env.BASE_URL + 'images/logo.png'} alt="Logo Portex" class="h-28 sm:h-32 md:h-36 w-auto object-contain mx-auto mb-6 animate-fade-in rounded-2xl" />
+      <Image src={logo} alt="Logo Portex" class="h-28 sm:h-32 md:h-36 w-auto object-contain mx-auto mb-6 animate-fade-in rounded-2xl" />
       
       <!-- Badge - UNA SOLA LÍNEA DINÁMICA CON ESTADO ACTUAL -->
       <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-portex-200 shadow-card mb-7 animate-fade-in">
@@ -46,6 +48,8 @@ import { business } from '../config/business';
         Veterinaria Portex
         <br />
         <span class="text-gradient">{business.tagline}</span>
+        <br />
+        <span class="block text-lg sm:text-xl lg:text-2xl font-medium text-gray-600 mt-2">en Isidro Casanova</span>
       </h1>
 
       <!-- Subtitle -->
