@@ -29,7 +29,7 @@ const {
   tags = ['veterinaria', 'clínica veterinaria', 'especialidades médicas', 'Isidro Casanova', 'Buenos Aires', 'mascotas', 'perros', 'gatos', 'animales no tradicionales']
 } = Astro.props;
 
-const siteUrl = (Astro.site?.toString() || 'https://portex-vet.com.ar/').replace(/\/+$/, '') + '/';
+const siteUrl = (Astro.site?.toString() || 'https://portex.flitzfa.com.ar/').replace(/\/+$/, '') + '/';
 const cleanImage = image.replace(/^\/+/, '');
 const ogImage = siteUrl + cleanImage;
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
