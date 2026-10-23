@@ -88,9 +88,12 @@ import { Image } from 'astro:assets';
     </div>
 
     <!-- Bottom Bar -->
-    <div class="border-t border-white/10 pt-8">
-      <p class="text-sm text-gray-500 text-center md:text-left">
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row gap-2 md:justify-between text-sm text-gray-500 text-center md:text-left">
+      <p>
         © 2026 {business.fullName}. Todos los derechos reservados.
+      </p>
+      <p>
+        Diseño y desarrollo web por <a href="https://flitzfa.com.ar/" target="_blank" rel="noopener" class="underline hover:text-gray-300">flitzfa</a>
       </p>
     </div>
   </div>
